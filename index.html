@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SyntaxHub - The most comprehensive AI tools directory with 50+ tools for developers, creators, and businesses.">
+    <title>SyntaxHub | Advanced AI Tools Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>SyntaxHub</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#tools">AI Tools</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">The Ultimate AI Tools Directory</h1>
+                <p class="fade-in">Discover, compare, and integrate the most powerful artificial intelligence tools available today. SyntaxHub is your gateway to the future of AI technology with 50+ carefully curated tools.</p>
+                <div class="cta-buttons">
+                    <a href="#tools" class="btn btn-primary fade-in"><i class="fas fa-rocket"></i> Explore Tools</a>
+                    <a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank" class="btn btn-accent fade-in"><i class="fab fa-facebook"></i> Join Community</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Tools Section -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>AI Tools Collection</h2>
+                <p>Browse through our curated collection of 50+ AI tools categorized for your convenience. Find the perfect solution for your needs with detailed information and ratings.</p>
+            </div>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-bar" id="search-bar" placeholder="Search AI tools...">
+            </div>
+            
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="all">All Categories</button>
+                <button class="tab-btn" data-category="generative">Generative AI</button>
+                <button class="tab-btn" data-category="chatbot">Chatbots</button>
+                <button class="tab-btn" data-category="video">Video Editing</button>
+                <button class="tab-btn" data-category="ml">Machine Learning</button>
+                <button class="tab-btn" data-category="nlp">NLP</button>
+                <button class="tab-btn" data-category="cv">Computer Vision</button>
+                <button class="tab-btn" data-category="audio">Audio Processing</button>
+            </div>
+            
+            <div class="tools-grid" id="tools-container">
+                <!-- Tools will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Community CTA -->
+    <div class="container">
+        <div class="community-cta">
+            <h2>Join Our AI Community</h2>
+            <p>Connect with other AI enthusiasts, share your projects, get help, and stay updated with the latest developments in artificial intelligence through our Facebook community.</p>
+            <a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank" class="btn btn-accent"><i class="fab fa-facebook"></i> Join on Facebook</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="AI Technology">
+                </div>
+                <div class="about-text">
+                    <h2>About SyntaxHub</h2>
+                    <p>SyntaxHub was born out of a passion for artificial intelligence and the need for a centralized platform where developers, researchers, and enthusiasts can discover and evaluate AI tools.</p>
+                    <p>Our mission is to simplify the AI landscape by providing comprehensive, up-to-date information about tools, frameworks, and libraries that power modern AI applications. We've carefully curated 50+ of the most impactful AI tools across various categories.</p>
+                    
+                    <div class="developer-info">
+                        <h3>Contact Information</h3>
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <span>Daniel Wambulawae</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>haruwambs0@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>0772145961</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-facebook"></i>
+                            <span><a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank" style="color: var(--primary); text-decoration: none;">Facebook Community</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Details Modal -->
+    <div id="tool-modal" class="tool-modal">
+        <div class="tool-modal-content">
+            <div class="tool-modal-header">
+                <h2 id="tool-modal-title">Tool Name</h2>
+                <button class="tool-modal-close">&times;</button>
+            </div>
+            <div class="tool-modal-body">
+                <div class="tool-modal-image" id="tool-modal-image">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="tool-modal-details">
+                    <div class="tool-modal-description" id="tool-modal-description">
+                        Loading description...
+                    </div>
+                    <div class="tool-modal-features">
+                        <h4>Key Features</h4>
+                        <ul id="tool-modal-features">
+                            <li>Feature loading...</li>
+                        </ul>
+                    </div>
+                    <div class="tool-modal-meta">
+                        <div class="tool-modal-meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span id="tool-modal-category">Category</span>
+                        </div>
+                        <div class="tool-modal-meta-item">
+                            <i class="fas fa-star"></i>
+                            <span id="tool-modal-rating">Rating</span>
+                        </div>
+                    </div>
+                    <div class="tool-modal-actions">
+                        <a href="#" target="_blank" class="btn btn-primary" id="tool-modal-link">
+                            <i class="fas fa-external-link-alt"></i> Visit Website
+                        </a>
+                        <button class="btn btn-secondary tool-modal-close">
+                            <i class="fas fa-times"></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SyntaxHub</h3>
+                    <p>Your gateway to the world of artificial intelligence tools and technologies with 50+ carefully curated tools.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:haruwambs0@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:0772145961"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tools">AI Tools</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-category="generative">Generative AI</a></li>
+                        <li><a href="#" data-category="chatbot">Chatbots</a></li>
+                        <li><a href="#" data-category="video">Video Editing</a></li>
+                        <li><a href="#" data-category="ml">Machine Learning</a></li>
+                        <li><a href="#" data-category="nlp">Natural Language</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:haruwambs0@gmail.com">Email Us</a></li>
+                        <li><a href="tel:0772145961">Call Us</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p> <span id="current-year"></span> SyntaxHub. Developed by Daniel Wambulawae.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
