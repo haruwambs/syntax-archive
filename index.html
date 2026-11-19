@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RUNR App Demo</title>
-    <!-- Google Fonts -->
+    <title>RUNR - Zambia's Delivery App</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Link to External CSS -->
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <!-- App Container -->
     <div class="app-container" id="app">
         
-        <!-- Demo Role Switcher (Top Right) -->
+        <!-- Top Right Controls -->
         <div class="demo-controls">
             <button class="demo-btn" onclick="toggleRole()"><i class="fa-solid fa-rotate"></i> Switch Role</button>
+            <button class="demo-btn" onclick="simulateLogin()" style="margin-left: 5px;">Login</button>
         </div>
 
         <!-- ========================================== -->
-        <!-- 1. HIRER VIEW (Light Mode)                 -->
+        <!-- 1. HIRER VIEW                              -->
         <!-- ========================================== -->
         <div id="view-hirer-home" class="view">
-            <!-- Header -->
             <div class="header-light">
                 <div class="flex justify-between items-center mb-2">
                     <div class="logo" style="color: var(--blue);">RUNR <i class="fa-solid fa-bolt"></i></div>
@@ -33,10 +30,9 @@
                         <i class="fa-solid fa-location-dot text-gray"></i>
                         <span class="text-sm font-bold">Lusaka, Zambia</span>
                         <i class="fa-regular fa-bell text-gray" style="font-size: 18px;"></i>
-                        <img src="https://i.pravatar.cc/150?img=11" alt="Profile" class="avatar-sm">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="Profile" class="avatar-sm" onclick="switchView('view-profile', this, 'nav-hirer')">
                     </div>
                 </div>
-                <!-- Search Bar -->
                 <div class="flex items-center gap-2 search-bar">
                     <i class="fa-solid fa-magnifying-glass text-gray"></i>
                     <input type="text" placeholder="What do you need?">
@@ -45,14 +41,13 @@
             </div>
 
             <div class="p-16">
-                <!-- Hero Cards -->
                 <div class="hero-card lite">
                     <h2>RUNR LITE</h2>
                     <p>for normal people</p>
                     <div class="hero-meta">
                         <span><i class="fa-solid fa-money-bill"></i> K30-K50</span>
                         <span><i class="fa-solid fa-clock"></i> 15 mins</span>
-                        <span><i class="fa-solid fa-box"></i> for small items</span>
+                        <span><i class="fa-solid fa-box"></i> small items</span>
                     </div>
                     <i class="fa-solid fa-bicycle hero-icon"></i>
                 </div>
@@ -63,12 +58,11 @@
                     <div class="hero-meta">
                         <span><i class="fa-solid fa-money-bill"></i> K120-K300</span>
                         <span><i class="fa-solid fa-clock"></i> 30 mins</span>
-                        <span><i class="fa-solid fa-truck"></i> for big items</span>
+                        <span><i class="fa-solid fa-truck"></i> big items</span>
                     </div>
                     <i class="fa-solid fa-car hero-icon"></i>
                 </div>
 
-                <!-- Shop Videos -->
                 <div class="flex justify-between items-center mt-4 mb-2">
                     <h3 class="text-lg">Shop Videos</h3>
                     <a href="#" class="text-sm font-bold text-green">See all ></a>
@@ -80,39 +74,28 @@
                     <div class="video-card" style="background-image: url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&q=80&w=200');">
                         <span><i class="fa-solid fa-play"></i> Essentials</span>
                     </div>
-                    <div class="video-card" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=200');">
-                        <span><i class="fa-solid fa-play"></i> Fresh Bread</span>
-                    </div>
                 </div>
 
-                <!-- Recent Quest List -->
                 <div class="flex justify-between items-center mt-4 mb-2">
                     <h3 class="text-lg">Quest List</h3>
                     <i class="fa-solid fa-sliders text-gray"></i>
                 </div>
                 
-                <div class="quest-item" onclick="openChat()">
-                    <div class="quest-icon"><i class="fa-solid fa-basket-shopping"></i></div>
-                    <div class="quest-info">
-                        <h4>Groceries from Shoprite</h4>
-                        <p>Pickup 5 items • 2.1km away</p>
+                <div id="hirer-quest-list">
+                    <div class="quest-item">
+                        <div class="quest-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+                        <div class="quest-info">
+                            <h4>Groceries from Shoprite</h4>
+                            <p>Pickup 5 items • 2.1km away</p>
+                        </div>
+                        <div class="quest-price">K25</div>
                     </div>
-                    <div class="quest-price">K25</div>
-                </div>
-
-                <div class="quest-item" onclick="openChat()">
-                    <div class="quest-icon blue"><i class="fa-solid fa-pills"></i></div>
-                    <div class="quest-info">
-                        <h4>Pickup medication</h4>
-                        <p>Boots Chemist • 1.5km away</p>
-                    </div>
-                    <div class="quest-price">K35</div>
                 </div>
             </div>
         </div>
 
         <!-- ========================================== -->
-        <!-- 2. POST QUEST VIEW (Hirer)                 -->
+        <!-- 2. POST QUEST VIEW                         -->
         <!-- ========================================== -->
         <div id="view-post-quest" class="view hidden">
             <div class="header-light flex items-center gap-4" style="border-bottom: none;">
@@ -143,11 +126,11 @@
                 <div class="form-group">
                     <div class="flex items-center gap-2 form-input mb-2">
                         <i class="fa-solid fa-location-dot text-green"></i>
-                        <input type="text" placeholder="Pickup location">
+                        <input type="text" id="pickup-input" placeholder="Pickup location (e.g. Shoprite Woodlands)">
                     </div>
                     <div class="flex items-center gap-2 form-input">
                         <i class="fa-solid fa-location-dot text-blue"></i>
-                        <input type="text" placeholder="Drop-off location">
+                        <input type="text" id="dropoff-input" placeholder="Drop-off location (e.g. Arcades Mall)">
                     </div>
                 </div>
 
@@ -158,7 +141,6 @@
                 <div class="flex justify-between font-bold mb-4"><span>Total payout to RUNR</span> <span class="text-green" id="total-fare">K75</span></div>
 
                 <button class="btn btn-primary" onclick="submitQuest()"><i class="fa-solid fa-bolt"></i> Post Quest</button>
-                <p class="text-sm text-gray" style="text-align: center; margin-top: 10px;">You'll be charged upon a RUNR accepting</p>
             </div>
         </div>
 
@@ -166,44 +148,36 @@
         <!-- 3. RUNR VIEW (Dark Mode)                   -->
         <!-- ========================================== -->
         <div id="view-runr-home" class="view hidden" data-theme="dark">
-            <!-- Header -->
             <div class="header-dark">
                 <div class="flex justify-between items-center mb-2">
                     <div class="logo">RUNR <i class="fa-solid fa-bolt"></i></div>
                     <div class="flex items-center gap-4">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-regular fa-bell"></i>
-                        <img src="https://i.pravatar.cc/150?img=33" alt="Profile" class="avatar-sm">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="Profile" class="avatar-sm" onclick="switchView('view-profile', this, 'nav-runr')">
                     </div>
                 </div>
             </div>
 
-            <!-- Location -->
             <div class="location-bar">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-location-dot text-blue"></i>
-                    <span>Lusaka, Zambia • Woodlands <i class="fa-solid fa-chevron-down text-sm"></i></span>
+                    <span>Lusaka, Zambia • Woodlands</span>
                 </div>
                 <div class="text-green text-sm flex items-center gap-1">
                     <div class="dot"></div> 12 RUNRs nearby
                 </div>
             </div>
 
-            <!-- Map Area -->
-            <div class="map-area">
-                <div class="map-overlay">
-                    <div class="dot"></div> Live map • Active now
-                </div>
-                <i class="fa-solid fa-location-dot map-pin"></i>
-            </div>
+            <!-- GOOGLE MAP -->
+            <div id="map" class="map-area"></div>
 
             <div class="p-16">
-                <!-- Profile Card -->
                 <div class="card profile-card">
                     <div class="flex items-center gap-4 mb-2">
-                        <div class="avatar-circle">CM</div>
+                        <div class="avatar-circle" id="runr-avatar">CM</div>
                         <div class="flex-col flex-1">
-                            <h3 class="font-bold text-md">Chanda M.</h3>
+                            <h3 class="font-bold text-md" id="runr-name">Chanda M.</h3>
                             <p class="text-sm text-gray">ABZ 1234</p>
                         </div>
                         <div class="flex items-center gap-1 font-bold text-md"><i class="fa-regular fa-star text-green"></i> 4.9</div>
@@ -221,41 +195,88 @@
                     </div>
                 </div>
 
-                <!-- Available Quests -->
                 <h3 class="text-lg font-bold mb-2">Available Quests — <span class="text-sm font-normal text-gray">Earn now</span></h3>
                 
-                <div class="quest-item quest-item-dark" onclick="openChat()">
-                    <div class="quest-icon"><i class="fa-solid fa-store"></i></div>
-                    <div class="quest-info">
-                        <h4>Big Shoprite shop</h4>
-                        <p class="text-sm text-gray">• 3.2km • 20-25 min • K150 payout</p>
-                    </div>
-                    <span class="badge badge-green">Retail</span>
-                </div>
-
-                <div class="quest-item quest-item-dark" onclick="openChat()">
-                    <div class="quest-icon blue"><i class="fa-solid fa-truck"></i></div>
-                    <div class="quest-info">
-                        <h4>Kitwe to Ndola</h4>
-                        <p class="text-sm text-gray">• 45km • 1h 10min • K280 payout</p>
-                    </div>
-                    <span class="badge badge-blue">Long-haul</span>
+                <div id="runr-quest-list">
+                    <p class="text-sm text-gray" style="text-align: center; padding: 20px;">Loading quests...</p>
                 </div>
 
                 <button class="btn btn-primary mt-4" onclick="goOnline()"><i class="fa-solid fa-bolt"></i> Accept Quests & Go Online</button>
-                <p class="text-sm text-gray" style="text-align: center; margin-top: 10px;">Avg. arrival time: 5-8 min • Cash or Mobile Money</p>
             </div>
         </div>
 
         <!-- ========================================== -->
-        <!-- 4. CHAT VIEW (Overlay)                     -->
+        <!-- 4. PROFILE / ABOUT US VIEW                 -->
+        <!-- ========================================== -->
+        <div id="view-profile" class="view hidden">
+            <div class="header-light flex items-center gap-4" style="border-bottom: none;">
+                <i class="fa-solid fa-chevron-left back-btn" onclick="switchView('view-hirer-home')"></i>
+                <h2 class="text-lg" style="margin: 0;">Profile & About Us</h2>
+            </div>
+            
+            <div class="p-20">
+                <!-- Profile Info -->
+                <div class="flex-col items-center mb-4">
+                    <img src="https://i.pravatar.cc/150?img=11" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px;">
+                    <h2 class="text-xl">Wambulawae Daniel</h2>
+                    <p class="text-sm text-gray">App Founder & Developer</p>
+                </div>
+
+                <!-- Details Card -->
+                <div class="card" style="padding: 20px;">
+                    <h3 class="font-bold mb-4 text-md">Contact Details</h3>
+                    
+                    <div class="flex items-center gap-4 mb-3">
+                        <i class="fa-solid fa-phone text-blue"></i>
+                        <div>
+                            <p class="text-sm text-gray">Phone</p>
+                            <p class="font-bold">0573373146</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 mb-3">
+                        <i class="fa-solid fa-envelope text-blue"></i>
+                        <div>
+                            <p class="text-sm text-gray">Email</p>
+                            <p class="font-bold" style="word-break: break-all;">wambsharu0@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-location-dot text-blue"></i>
+                        <div>
+                            <p class="text-sm text-gray">Location</p>
+                            <p class="font-bold">Lusaka, Zambia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Us Text -->
+                <div class="card" style="padding: 20px;">
+                    <h3 class="font-bold mb-2 text-md">About RUNR</h3>
+                    <p class="text-sm text-gray" style="line-height: 1.6;">
+                        RUNR is Zambia's premier on-demand delivery ecosystem. Designed to bridge the gap between everyday needs and fast, reliable service. 
+                        <br><br>
+                        Built with the vision of empowering local communities, RUNR connects Hirers (people who need things done) with RUNRs (dedicated drivers and individuals ready to run errands). 
+                        <br><br>
+                        Founded by Wambulawae Daniel, we are committed to safety, speed, and trust. Whether it's groceries from Shoprite or documents to Arcades Mall, RUNR is always ready to move.
+                    </p>
+                </div>
+
+                <!-- Version -->
+                <p class="text-sm text-gray" style="text-align: center; margin-top: 20px;">App Version 1.0.0</p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 5. CHAT VIEW                               -->
         <!-- ========================================== -->
         <div id="view-chat" class="modal hidden">
             <div class="modal-header">
                 <i class="fa-solid fa-chevron-left back-btn" onclick="closeChat()"></i>
                 <img src="https://i.pravatar.cc/150?img=11" class="avatar-sm" style="width: 40px; height: 40px;">
                 <div>
-                    <h2>Hirer (Chanda)</h2>
+                    <h2 id="chat-title">Chat</h2>
                     <p class="text-sm text-green">Online</p>
                 </div>
                 <i class="fa-solid fa-phone text-blue" style="font-size: 20px;"></i>
@@ -263,12 +284,10 @@
             
             <div class="chat-container">
                 <div class="chat-messages" id="chat-messages">
-                    <div class="msg received">Hi, I need this picked up urgently.</div>
-                    <div class="msg sent">No problem, I'm on my way.</div>
-                    <div class="msg received">Great! Please use OTP 1234 at pickup.</div>
+                    <!-- Messages load here -->
                 </div>
                 <div class="chat-input">
-                    <input type="text" id="chat-input-field" placeholder="Type a message...">
+                    <input type="text" id="chat-input-field" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendMessage()">
                     <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
@@ -277,49 +296,34 @@
         <!-- ========================================== -->
         <!-- BOTTOM NAVIGATION                          -->
         <!-- ========================================== -->
-        <!-- Hirer Nav -->
         <div class="bottom-nav" id="nav-hirer">
             <div class="nav-item active" onclick="switchView('view-hirer-home', this, 'nav-hirer')">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
+                <i class="fa-solid fa-house"></i><span>Home</span>
             </div>
             <div class="nav-item" onclick="switchView('view-post-quest', this, 'nav-hirer')">
-                <i class="fa-solid fa-circle-plus" style="font-size: 24px; margin-top: -4px;"></i>
-                <span>Post Quest</span>
+                <i class="fa-solid fa-circle-plus" style="font-size: 24px; margin-top: -4px;"></i><span>Post Quest</span>
             </div>
-            <div class="nav-item">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Explore</span>
-            </div>
-            <div class="nav-item">
-                <i class="fa-regular fa-user"></i>
-                <span>Profile</span>
+            <div class="nav-item" onclick="switchView('view-profile', this, 'nav-hirer')">
+                <i class="fa-regular fa-user"></i><span>Profile</span>
             </div>
         </div>
 
-        <!-- RUNR Nav -->
         <div class="bottom-nav dark-nav hidden" id="nav-runr">
             <div class="nav-item active" onclick="switchView('view-runr-home', this, 'nav-runr')">
-                <i class="fa-solid fa-house"></i>
-                <span>Home</span>
+                <i class="fa-solid fa-house"></i><span>Home</span>
             </div>
             <div class="nav-item" onclick="switchView('view-runr-home', this, 'nav-runr')">
-                <i class="fa-solid fa-clipboard-list"></i>
-                <span>Quests</span>
+                <i class="fa-solid fa-clipboard-list"></i><span>Quests</span>
             </div>
-            <div class="nav-item">
-                <i class="fa-regular fa-clock"></i>
-                <span>Activity</span>
-            </div>
-            <div class="nav-item">
-                <i class="fa-regular fa-user"></i>
-                <span>Profile</span>
+            <div class="nav-item" onclick="switchView('view-profile', this, 'nav-runr')">
+                <i class="fa-regular fa-user"></i><span>Profile</span>
             </div>
         </div>
 
     </div>
 
-    <!-- Link to External JavaScript -->
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
     <script src="script.js"></script>
 </body>
 </html>
