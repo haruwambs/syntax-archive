@@ -167,35 +167,12 @@ body {
 
 /* Map Area */
 .map-area { 
-    height: 180px; 
-    background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=400') center/cover; 
-    position: relative; 
+    width: 100%; 
+    height: 200px; 
+    background: #e5e5ea; 
     border-bottom: 1px solid var(--border); 
+    position: relative;
 }
-.map-pin { 
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    color: var(--blue); 
-    font-size: 30px; 
-    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3)); 
-}
-.map-overlay { 
-    position: absolute; 
-    top: 10px; 
-    left: 10px; 
-    background: rgba(255,255,255,0.9); 
-    padding: 6px 12px; 
-    border-radius: 20px; 
-    font-size: 11px; 
-    font-weight: 600; 
-    display: flex; 
-    align-items: center; 
-    gap: 6px; 
-    color: var(--text-dark);
-}
-.map-overlay .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
 
 /* Toggle Switch */
 .toggle { 
@@ -292,7 +269,6 @@ body {
     border: 1px solid var(--border); 
     cursor: pointer; 
 }
-.quest-item-dark { background: var(--white); border: 1px solid var(--border); }
 .quest-icon { 
     width: 40px; 
     height: 40px; 
@@ -487,7 +463,7 @@ body {
 .back-btn { font-size: 20px; cursor: pointer; color: var(--text-dark); }
 
 /* Demo Controls */
-.demo-controls { position: absolute; top: 10px; right: 10px; z-index: 9999; }
+.demo-controls { position: absolute; top: 10px; right: 10px; z-index: 9999; display: flex; }
 .demo-btn { 
     background: rgba(0,0,0,0.5); 
     color: white; 
@@ -499,7 +475,17 @@ body {
     backdrop-filter: blur(4px); 
 }
 
-/* Dark mode text fixes */
+/* ================= PROFILE / ABOUT US PAGE ================= */
+#view-profile .card {
+    border: 1px solid var(--border);
+    box-shadow: none;
+    background: var(--bg-light);
+}
+[data-theme="dark"] #view-profile .card {
+    background: var(--white);
+}
+
+/* Dark mode text fixes for modal and inputs */
 [data-theme="dark"] .modal,
 [data-theme="dark"] .modal-header,
 [data-theme="dark"] .chat-input {
