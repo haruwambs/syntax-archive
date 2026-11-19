@@ -2,217 +2,324 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SyntaxHub - The most comprehensive AI tools directory with 50+ tools for developers, creators, and businesses.">
-    <title>SyntaxHub | Advanced AI Tools Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RUNR App Demo</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <i class="fas fa-robot"></i>
-                    <span>SyntaxHub</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#tools">AI Tools</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-                <button class="theme-toggle" id="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="burger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">The Ultimate AI Tools Directory</h1>
-                <p class="fade-in">Discover, compare, and integrate the most powerful artificial intelligence tools available today. SyntaxHub is your gateway to the future of AI technology with 50+ carefully curated tools.</p>
-                <div class="cta-buttons">
-                    <a href="#tools" class="btn btn-primary fade-in"><i class="fas fa-rocket"></i> Explore Tools</a>
-                    <a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank" class="btn btn-accent fade-in"><i class="fab fa-facebook"></i> Join Community</a>
+    <!-- App Container -->
+    <div class="app-container" id="app">
+        
+        <!-- Demo Role Switcher (Top Right) -->
+        <div class="demo-controls">
+            <button class="demo-btn" onclick="toggleRole()"><i class="fa-solid fa-rotate"></i> Switch Role</button>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 1. HIRER VIEW (Light Mode)                 -->
+        <!-- ========================================== -->
+        <div id="view-hirer-home" class="view">
+            <!-- Header -->
+            <div class="header-light">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="logo" style="color: var(--blue);">RUNR <i class="fa-solid fa-bolt"></i></div>
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-location-dot text-gray"></i>
+                        <span class="text-sm font-bold">Lusaka, Zambia</span>
+                        <i class="fa-regular fa-bell text-gray" style="font-size: 18px;"></i>
+                        <img src="https://i.pravatar.cc/150?img=11" alt="Profile" class="avatar-sm">
+                    </div>
+                </div>
+                <!-- Search Bar -->
+                <div class="flex items-center gap-2 search-bar">
+                    <i class="fa-solid fa-magnifying-glass text-gray"></i>
+                    <input type="text" placeholder="What do you need?">
+                    <i class="fa-solid fa-microphone text-gray"></i>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- AI Tools Section -->
-    <section id="tools" class="tools-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>AI Tools Collection</h2>
-                <p>Browse through our curated collection of 50+ AI tools categorized for your convenience. Find the perfect solution for your needs with detailed information and ratings.</p>
-            </div>
-            
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-bar" id="search-bar" placeholder="Search AI tools...">
-            </div>
-            
-            <div class="category-tabs">
-                <button class="tab-btn active" data-category="all">All Categories</button>
-                <button class="tab-btn" data-category="generative">Generative AI</button>
-                <button class="tab-btn" data-category="chatbot">Chatbots</button>
-                <button class="tab-btn" data-category="video">Video Editing</button>
-                <button class="tab-btn" data-category="ml">Machine Learning</button>
-                <button class="tab-btn" data-category="nlp">NLP</button>
-                <button class="tab-btn" data-category="cv">Computer Vision</button>
-                <button class="tab-btn" data-category="audio">Audio Processing</button>
-            </div>
-            
-            <div class="tools-grid" id="tools-container">
-                <!-- Tools will be dynamically inserted here -->
-            </div>
-        </div>
-    </section>
+            <div class="p-16">
+                <!-- Hero Cards -->
+                <div class="hero-card lite">
+                    <h2>RUNR LITE</h2>
+                    <p>for normal people</p>
+                    <div class="hero-meta">
+                        <span><i class="fa-solid fa-money-bill"></i> K30-K50</span>
+                        <span><i class="fa-solid fa-clock"></i> 15 mins</span>
+                        <span><i class="fa-solid fa-box"></i> for small items</span>
+                    </div>
+                    <i class="fa-solid fa-bicycle hero-icon"></i>
+                </div>
 
-    <!-- Community CTA -->
-    <div class="container">
-        <div class="community-cta">
-            <h2>Join Our AI Community</h2>
-            <p>Connect with other AI enthusiasts, share your projects, get help, and stay updated with the latest developments in artificial intelligence through our Facebook community.</p>
-            <a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank" class="btn btn-accent"><i class="fab fa-facebook"></i> Join on Facebook</a>
+                <div class="hero-card driver">
+                    <h2>RUNR DRIVER</h2>
+                    <p>for drivers</p>
+                    <div class="hero-meta">
+                        <span><i class="fa-solid fa-money-bill"></i> K120-K300</span>
+                        <span><i class="fa-solid fa-clock"></i> 30 mins</span>
+                        <span><i class="fa-solid fa-truck"></i> for big items</span>
+                    </div>
+                    <i class="fa-solid fa-car hero-icon"></i>
+                </div>
+
+                <!-- Shop Videos -->
+                <div class="flex justify-between items-center mt-4 mb-2">
+                    <h3 class="text-lg">Shop Videos</h3>
+                    <a href="#" class="text-sm font-bold text-green">See all ></a>
+                </div>
+                <div class="scroll-x">
+                    <div class="video-card" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=200');">
+                        <span><i class="fa-solid fa-play"></i> Fruits & Veg</span>
+                    </div>
+                    <div class="video-card" style="background-image: url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&q=80&w=200');">
+                        <span><i class="fa-solid fa-play"></i> Essentials</span>
+                    </div>
+                    <div class="video-card" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=200');">
+                        <span><i class="fa-solid fa-play"></i> Fresh Bread</span>
+                    </div>
+                </div>
+
+                <!-- Recent Quest List -->
+                <div class="flex justify-between items-center mt-4 mb-2">
+                    <h3 class="text-lg">Quest List</h3>
+                    <i class="fa-solid fa-sliders text-gray"></i>
+                </div>
+                
+                <div class="quest-item" onclick="openChat()">
+                    <div class="quest-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+                    <div class="quest-info">
+                        <h4>Groceries from Shoprite</h4>
+                        <p>Pickup 5 items • 2.1km away</p>
+                    </div>
+                    <div class="quest-price">K25</div>
+                </div>
+
+                <div class="quest-item" onclick="openChat()">
+                    <div class="quest-icon blue"><i class="fa-solid fa-pills"></i></div>
+                    <div class="quest-info">
+                        <h4>Pickup medication</h4>
+                        <p>Boots Chemist • 1.5km away</p>
+                    </div>
+                    <div class="quest-price">K35</div>
+                </div>
+            </div>
         </div>
+
+        <!-- ========================================== -->
+        <!-- 2. POST QUEST VIEW (Hirer)                 -->
+        <!-- ========================================== -->
+        <div id="view-post-quest" class="view hidden">
+            <div class="header-light flex items-center gap-4" style="border-bottom: none;">
+                <i class="fa-solid fa-chevron-left back-btn" onclick="switchView('view-hirer-home')"></i>
+                <h2 class="text-lg" style="margin: 0;">Post a Quest</h2>
+            </div>
+            
+            <div class="p-20">
+                <h3 class="font-bold mb-2">How big is it?</h3>
+                
+                <div class="select-card active" onclick="selectSize(this, 45)">
+                    <div class="icon icon-green"><i class="fa-solid fa-box"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Small • fits in bag</div>
+                        <div class="text-sm text-gray">RUNR LITE • K30-K50</div>
+                    </div>
+                </div>
+                
+                <div class="select-card" onclick="selectSize(this, 120)">
+                    <div class="icon icon-blue"><i class="fa-solid fa-car"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Big • needs car</div>
+                        <div class="text-sm text-gray">RUNR DRIVER • K120-K300</div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold mt-4 mb-2">Route details</h3>
+                <div class="form-group">
+                    <div class="flex items-center gap-2 form-input mb-2">
+                        <i class="fa-solid fa-location-dot text-green"></i>
+                        <input type="text" placeholder="Pickup location">
+                    </div>
+                    <div class="flex items-center gap-2 form-input">
+                        <i class="fa-solid fa-location-dot text-blue"></i>
+                        <input type="text" placeholder="Drop-off location">
+                    </div>
+                </div>
+
+                <h3 class="font-bold mt-4 mb-2">Price breakdown</h3>
+                <div class="flex justify-between text-sm mb-2"><span class="text-gray">Base fare</span> <span class="font-bold" id="base-fare">K45</span></div>
+                <div class="flex justify-between text-sm mb-2"><span class="text-gray">Distance fee (3.5km)</span> <span class="font-bold">K25</span></div>
+                <div class="flex justify-between text-sm mb-4"><span class="text-gray">Platform fee</span> <span class="font-bold">K5</span></div>
+                <div class="flex justify-between font-bold mb-4"><span>Total payout to RUNR</span> <span class="text-green" id="total-fare">K75</span></div>
+
+                <button class="btn btn-primary" onclick="submitQuest()"><i class="fa-solid fa-bolt"></i> Post Quest</button>
+                <p class="text-sm text-gray" style="text-align: center; margin-top: 10px;">You'll be charged upon a RUNR accepting</p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 3. RUNR VIEW (Dark Mode)                   -->
+        <!-- ========================================== -->
+        <div id="view-runr-home" class="view hidden" data-theme="dark">
+            <!-- Header -->
+            <div class="header-dark">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="logo">RUNR <i class="fa-solid fa-bolt"></i></div>
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-regular fa-bell"></i>
+                        <img src="https://i.pravatar.cc/150?img=33" alt="Profile" class="avatar-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="location-bar">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-location-dot text-blue"></i>
+                    <span>Lusaka, Zambia • Woodlands <i class="fa-solid fa-chevron-down text-sm"></i></span>
+                </div>
+                <div class="text-green text-sm flex items-center gap-1">
+                    <div class="dot"></div> 12 RUNRs nearby
+                </div>
+            </div>
+
+            <!-- Map Area -->
+            <div class="map-area">
+                <div class="map-overlay">
+                    <div class="dot"></div> Live map • Active now
+                </div>
+                <i class="fa-solid fa-location-dot map-pin"></i>
+            </div>
+
+            <div class="p-16">
+                <!-- Profile Card -->
+                <div class="card profile-card">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="avatar-circle">CM</div>
+                        <div class="flex-col flex-1">
+                            <h3 class="font-bold text-md">Chanda M.</h3>
+                            <p class="text-sm text-gray">ABZ 1234</p>
+                        </div>
+                        <div class="flex items-center gap-1 font-bold text-md"><i class="fa-regular fa-star text-green"></i> 4.9</div>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <div>
+                            <p class="text-sm text-gray">Earnings today</p>
+                            <p class="text-lg text-green font-bold">K750</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold">Status</span>
+                            <div class="toggle on" onclick="toggleOnline()" id="online-toggle"></div>
+                            <span class="text-sm font-bold text-green" id="online-text">Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Quests -->
+                <h3 class="text-lg font-bold mb-2">Available Quests — <span class="text-sm font-normal text-gray">Earn now</span></h3>
+                
+                <div class="quest-item quest-item-dark" onclick="openChat()">
+                    <div class="quest-icon"><i class="fa-solid fa-store"></i></div>
+                    <div class="quest-info">
+                        <h4>Big Shoprite shop</h4>
+                        <p class="text-sm text-gray">• 3.2km • 20-25 min • K150 payout</p>
+                    </div>
+                    <span class="badge badge-green">Retail</span>
+                </div>
+
+                <div class="quest-item quest-item-dark" onclick="openChat()">
+                    <div class="quest-icon blue"><i class="fa-solid fa-truck"></i></div>
+                    <div class="quest-info">
+                        <h4>Kitwe to Ndola</h4>
+                        <p class="text-sm text-gray">• 45km • 1h 10min • K280 payout</p>
+                    </div>
+                    <span class="badge badge-blue">Long-haul</span>
+                </div>
+
+                <button class="btn btn-primary mt-4" onclick="goOnline()"><i class="fa-solid fa-bolt"></i> Accept Quests & Go Online</button>
+                <p class="text-sm text-gray" style="text-align: center; margin-top: 10px;">Avg. arrival time: 5-8 min • Cash or Mobile Money</p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 4. CHAT VIEW (Overlay)                     -->
+        <!-- ========================================== -->
+        <div id="view-chat" class="modal hidden">
+            <div class="modal-header">
+                <i class="fa-solid fa-chevron-left back-btn" onclick="closeChat()"></i>
+                <img src="https://i.pravatar.cc/150?img=11" class="avatar-sm" style="width: 40px; height: 40px;">
+                <div>
+                    <h2>Hirer (Chanda)</h2>
+                    <p class="text-sm text-green">Online</p>
+                </div>
+                <i class="fa-solid fa-phone text-blue" style="font-size: 20px;"></i>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="msg received">Hi, I need this picked up urgently.</div>
+                    <div class="msg sent">No problem, I'm on my way.</div>
+                    <div class="msg received">Great! Please use OTP 1234 at pickup.</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input-field" placeholder="Type a message...">
+                    <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- BOTTOM NAVIGATION                          -->
+        <!-- ========================================== -->
+        <!-- Hirer Nav -->
+        <div class="bottom-nav" id="nav-hirer">
+            <div class="nav-item active" onclick="switchView('view-hirer-home', this, 'nav-hirer')">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item" onclick="switchView('view-post-quest', this, 'nav-hirer')">
+                <i class="fa-solid fa-circle-plus" style="font-size: 24px; margin-top: -4px;"></i>
+                <span>Post Quest</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Explore</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+            </div>
+        </div>
+
+        <!-- RUNR Nav -->
+        <div class="bottom-nav dark-nav hidden" id="nav-runr">
+            <div class="nav-item active" onclick="switchView('view-runr-home', this, 'nav-runr')">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item" onclick="switchView('view-runr-home', this, 'nav-runr')">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <span>Quests</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-regular fa-clock"></i>
+                <span>Activity</span>
+            </div>
+            <div class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span>Profile</span>
+            </div>
+        </div>
+
     </div>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="AI Technology">
-                </div>
-                <div class="about-text">
-                    <h2>About SyntaxHub</h2>
-                    <p>SyntaxHub was born out of a passion for artificial intelligence and the need for a centralized platform where developers, researchers, and enthusiasts can discover and evaluate AI tools.</p>
-                    <p>Our mission is to simplify the AI landscape by providing comprehensive, up-to-date information about tools, frameworks, and libraries that power modern AI applications. We've carefully curated 50+ of the most impactful AI tools across various categories.</p>
-                    
-                    <div class="developer-info">
-                        <h3>Contact Information</h3>
-                        <div class="info-item">
-                            <i class="fas fa-user"></i>
-                            <span>Daniel Wambulawae</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>haruwambs0@gmail.com</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone"></i>
-                            <span>0772145961</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fab fa-facebook"></i>
-                            <span><a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank" style="color: var(--primary); text-decoration: none;">Facebook Community</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tool Details Modal -->
-    <div id="tool-modal" class="tool-modal">
-        <div class="tool-modal-content">
-            <div class="tool-modal-header">
-                <h2 id="tool-modal-title">Tool Name</h2>
-                <button class="tool-modal-close">&times;</button>
-            </div>
-            <div class="tool-modal-body">
-                <div class="tool-modal-image" id="tool-modal-image">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="tool-modal-details">
-                    <div class="tool-modal-description" id="tool-modal-description">
-                        Loading description...
-                    </div>
-                    <div class="tool-modal-features">
-                        <h4>Key Features</h4>
-                        <ul id="tool-modal-features">
-                            <li>Feature loading...</li>
-                        </ul>
-                    </div>
-                    <div class="tool-modal-meta">
-                        <div class="tool-modal-meta-item">
-                            <i class="fas fa-tag"></i>
-                            <span id="tool-modal-category">Category</span>
-                        </div>
-                        <div class="tool-modal-meta-item">
-                            <i class="fas fa-star"></i>
-                            <span id="tool-modal-rating">Rating</span>
-                        </div>
-                    </div>
-                    <div class="tool-modal-actions">
-                        <a href="#" target="_blank" class="btn btn-primary" id="tool-modal-link">
-                            <i class="fas fa-external-link-alt"></i> Visit Website
-                        </a>
-                        <button class="btn btn-secondary tool-modal-close">
-                            <i class="fas fa-times"></i> Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>SyntaxHub</h3>
-                    <p>Your gateway to the world of artificial intelligence tools and technologies with 50+ carefully curated tools.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:haruwambs0@gmail.com"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:0772145961"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#tools">AI Tools</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" data-category="generative">Generative AI</a></li>
-                        <li><a href="#" data-category="chatbot">Chatbots</a></li>
-                        <li><a href="#" data-category="video">Video Editing</a></li>
-                        <li><a href="#" data-category="ml">Machine Learning</a></li>
-                        <li><a href="#" data-category="nlp">Natural Language</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><a href="mailto:haruwambs0@gmail.com">Email Us</a></li>
-                        <li><a href="tel:0772145961">Call Us</a></li>
-                        <li><a href="https://www.facebook.com/profile.php?id=61576469609943" target="_blank">Facebook</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p> <span id="current-year"></span> SyntaxHub. Developed by Daniel Wambulawae.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Link to External JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
